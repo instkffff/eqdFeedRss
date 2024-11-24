@@ -27,4 +27,4 @@ function sendArticles(articles) {
   });
 }
 
-export default sendArticles;
+export {sendArticles}
