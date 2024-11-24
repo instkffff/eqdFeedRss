@@ -18,15 +18,17 @@ function sendArticles(articles) {
   // 反转数组
   articles = articles.reverse();
 
-  articles.forEach(article => {
-    const message = markdown(article);
-    bot.telegram.sendMessage(process.env.CHANNEL_ID, message, { parse_mode: 'Markdown' })
-      .then(() => {
-        console.log(`Sent article: ${article.title}`);
-      })
-      .catch((error) => {
-        console.error(`Error sending article: ${article.title}`, error);
-      });
+  articles.forEach((article, index) => {
+    setTimeout(() => {
+      const message = markdown(article);
+      bot.telegram.sendMessage(process.env.CHANNEL_ID, message, { parse_mode: 'Markdown' })
+        .then(() => {
+          console.log(`Sent article: ${article.title}`);
+        })
+        .catch((error) => {
+          console.error(`Error sending article: ${article.title}`, error);
+        });
+    }, index * 5000); // 每篇文章之间间隔 5 秒
   });
 }
 
