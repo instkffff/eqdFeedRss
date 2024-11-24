@@ -15,6 +15,9 @@ const markdown = (article) => {
 };
 
 function sendArticles(articles) {
+  // 反转数组
+  articles = articles.reverse();
+
   articles.forEach(article => {
     const message = markdown(article);
     bot.telegram.sendMessage(process.env.CHANNEL_ID, message, { parse_mode: 'Markdown' })
@@ -27,4 +30,4 @@ function sendArticles(articles) {
   });
 }
 
-export {sendArticles}
+export { sendArticles };
