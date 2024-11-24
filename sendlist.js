@@ -9,8 +9,13 @@ async function processNewArticles() {
     // 调用 main 函数获取新增文章列表
     const newArticles = await main();
 
-    // 将新增文章列表写入 unsend.json 文件
-    writeUnsendArticles(newArticles);
+    // 检查是否有新文章
+    if (newArticles.length === 0) {
+      console.log('no new article need write to list');
+    } else {
+      // 将新增文章列表写入 unsend.json 文件
+      writeUnsendArticles(newArticles);
+    }
   } catch (error) {
     console.error('Error processing new articles:', error);
   }
@@ -42,4 +47,4 @@ function writeUnsendArticles(articles) {
   }
 }
 
-export {processNewArticles}
+export { processNewArticles };
