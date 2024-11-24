@@ -1,0 +1,22 @@
+{
+  "name": "eqdfeedrss",
+  "version": "1.0.0",
+  "description": "mlp",
+  "main": "eqdfeed.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "eqdfeed"
+  ],
+  "author": "NightCandle",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^1.0.0",
+    "feedparser": "^2.2.10",
+    "fs-extra": "^11.2.0",
+    "request": "^2.88.2",
+    "telegraf": "^4.16.3"
+  },
+  "type": "module"
+}
