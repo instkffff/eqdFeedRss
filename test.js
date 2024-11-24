@@ -1,6 +1,5 @@
-import { main } from './rss.js';
+import { processNewArticles } from './sendlist.js';
 import { sendArticles } from './sender.js';
 
-main().then(articles => {
-    sendArticles(articles);
-});
+await processNewArticles();
+await sendArticles();
