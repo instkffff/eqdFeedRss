@@ -10,7 +10,7 @@ async function processNewArticles() {
     const newArticles = await main();
 
     // 检查是否有新文章
-    if (newArticles.length === 0) {
+    if (newArticles === 0) {
       console.log('no new article need write to list');
     } else {
       // 将新增文章列表写入 unsend.json 文件
