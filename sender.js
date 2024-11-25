@@ -2,6 +2,7 @@ import { Telegraf } from "telegraf";
 import dotenv from 'dotenv';
 import fs from 'fs';
 import path from 'path';
+import { url } from "inspector";
 
 dotenv.config({ path: './config.env' });
 
@@ -17,6 +18,16 @@ const markdown = (article) => {
 [Article Link](${article.link})
 `;
 };
+
+const markdown1 = (article) => {
+  let url = encodeURIComponent(article.link);
+  return `
+*${article.title}*
+[Article Link](https://t.me/iv?url=${url}&rhash=3cd30abc99a51c)
+`;
+};
+
+
 
 async function sendArticles() {
   try {
@@ -41,7 +52,7 @@ async function sendArticles() {
     // 倒序遍历文章列表
     for (let i = unsendArticles.length - 1; i >= 0; i--) {
       const article = unsendArticles[i];
-      const message = markdown(article);
+      const message = markdown1(article);
 
       try {
         await bot.telegram.sendMessage(process.env.CHANNEL_ID, message, { parse_mode: 'Markdown' });
