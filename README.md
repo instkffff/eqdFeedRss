@@ -1,14 +1,21 @@
 # eqdFeedRss
 
 ## 项目描述
+
 本项目是一个RSS源解析器，用于特定来源（例如Equestria Daily）。它会获取、解析并处理新的文章，并将文章ID存储在本地以避免重复发送。该项目还包括将新文章发送到Telegram频道的功能。
 
 ## 安装
+
 要安装所需的依赖项，请运行以下命令：
 
 ```sh
 npm install
 ```
+
+## 配置
+
+- 建立telegram频道、telegram机器人。
+- 获取CHANNEL_ID、BOT_TOKEN并填写到config.env中。
 
 ## 使用
 
