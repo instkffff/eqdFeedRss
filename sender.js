@@ -24,10 +24,9 @@ const markdown1 = (article) => {
   let link = article.link
   return `
 *${article.title}*
-[instant view](https://t.me/iv?url=${url}&rhash=3cd30abc99a51c)
---------------
+[----------------](https://t.me/iv?url=${url}&rhash=3cd30abc99a51c)
 [Article Link](${link})
---------------
+----------------
 `;
 };
 
