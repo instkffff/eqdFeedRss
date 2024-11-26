@@ -37,7 +37,7 @@ function writeUnsendArticles(articles) {
     }
 
     // 合并新的文章列表
-    unsendArticles = [...unsendArticles, ...articles];
+    unsendArticles = [...articles, ...unsendArticles];
 
     // 将更新后的数组写回文件
     fs.writeFileSync(unsendFilePath, JSON.stringify(unsendArticles, null, 2), 'utf-8');
