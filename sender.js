@@ -2,7 +2,6 @@ import { Telegraf } from "telegraf";
 import dotenv from 'dotenv';
 import fs from 'fs';
 import path from 'path';
-import { url } from "inspector";
 
 dotenv.config({ path: './config.env' });
 
@@ -12,14 +11,6 @@ const unsendFilePath = path.join('./', 'unsend.json');
 
 // 生成 Markdown 格式的字符串
 const markdown = (article) => {
-  return `
-*${article.title}*
-[-------------------------------](${article.image})
-[Article Link](${article.link})
-`;
-};
-
-const markdown1 = (article) => {
   let url = encodeURIComponent(article.link);
   let link = article.link
   return `
@@ -29,9 +20,6 @@ const markdown1 = (article) => {
 ----------------
 `;
 };
-
-
-
 async function sendArticles() {
   try {
     // 读取 unsend.json 文件内容
@@ -55,7 +43,7 @@ async function sendArticles() {
     // 倒序遍历文章列表
     for (let i = unsendArticles.length - 1; i >= 0; i--) {
       const article = unsendArticles[i];
-      const message = markdown1(article);
+      const message = markdown(article);
 
       try {
         await bot.telegram.sendMessage(process.env.CHANNEL_ID, message, { parse_mode: 'Markdown' });
